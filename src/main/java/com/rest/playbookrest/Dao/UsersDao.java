@@ -1,4 +1,11 @@
 package com.rest.playbookrest.Dao;
 
-public class UsersDao {
+import com.rest.playbookrest.Entity.Users;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsersDao extends JpaRepository<Users, Integer> {
+
+    public Users findByUserName(String userName);
+
+
 }

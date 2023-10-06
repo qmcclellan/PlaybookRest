@@ -22,6 +22,9 @@ public class Coach {
 
     @Column(name="image")
     private String imagePath;
+
+    @OneToOne
+    private Users user;
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
 
@@ -33,7 +36,11 @@ public class Coach {
         this.type = type;
     }
 
-
+    public Coach(String name, CoachType type, Users user) {
+        this.name = name;
+        this.type = type;
+        this.user = user;
+    }
 
     public Coach(String name, CoachType type, String imagePath) {
         this.name = name;
@@ -41,11 +48,26 @@ public class Coach {
         this.imagePath = imagePath;
     }
 
-    public Coach(Integer id, String name, CoachType type,String imagePath) {
+    public Coach(String name, CoachType type, String imagePath, Users user) {
+        this.name = name;
+        this.type = type;
+        this.imagePath = imagePath;
+        this.user = user;
+    }
+
+    public Coach(Integer id, String name, CoachType type, String imagePath) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.imagePath = imagePath;
+    }
+
+    public Coach(Integer id, String name, CoachType type, String imagePath, Users user) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.imagePath = imagePath;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -79,6 +101,14 @@ public class Coach {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public List<Playbook> getPlayBooks() {

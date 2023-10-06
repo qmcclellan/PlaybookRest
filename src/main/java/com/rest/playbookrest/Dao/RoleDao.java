@@ -1,4 +1,10 @@
 package com.rest.playbookrest.Dao;
 
-public class RoleDao {
+import com.rest.playbookrest.Entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleDao extends JpaRepository<Role,Integer> {
+
+    public Role findRoleByName(String theRoleName);
+
 }
