@@ -28,18 +28,25 @@ public class Coach {
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
 
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinColumn(name="team")
+    private Team team;
+
     public Coach() {
     }
 
-    public Coach(String name, CoachType type) {
-        this.name = name;
-        this.type = type;
-    }
 
     public Coach(String name, CoachType type, Users user) {
         this.name = name;
         this.type = type;
         this.user = user;
+    }
+
+    public Coach(String name, CoachType type, Users user, Team team) {
+        this.name = name;
+        this.type = type;
+        this.user = user;
+        this.team = team;
     }
 
     public Coach(String name, CoachType type, String imagePath) {
@@ -48,6 +55,13 @@ public class Coach {
         this.imagePath = imagePath;
     }
 
+    public Coach(String name, CoachType type,Team team, String imagePath) {
+        this.name = name;
+        this.type = type;
+        this.team = team;
+        this.imagePath = imagePath;
+
+    }
     public Coach(String name, CoachType type, String imagePath, Users user) {
         this.name = name;
         this.type = type;
@@ -55,17 +69,27 @@ public class Coach {
         this.user = user;
     }
 
-    public Coach(Integer id, String name, CoachType type, String imagePath) {
+    public Coach(String name, CoachType type,Team team, String imagePath, Users user) {
+        this.name = name;
+        this.type = type;
+        this.team = team;
+        this.imagePath = imagePath;
+        this.user = user;
+    }
+
+    public Coach(Integer id, String name, CoachType type,Team team, String imagePath) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.team = team;
         this.imagePath = imagePath;
     }
 
-    public Coach(Integer id, String name, CoachType type, String imagePath, Users user) {
+    public Coach(Integer id, String name, CoachType type, Team team, String imagePath, Users user) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.team = team;
         this.imagePath = imagePath;
         this.user = user;
     }
@@ -124,6 +148,14 @@ public class Coach {
         playBooks = Arrays.asList(playBooksToAdd);
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -131,6 +163,9 @@ public class Coach {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", imagePath='" + imagePath + '\'' +
+                ", user=" + user +
+                ", playBooks=" + playBooks +
+                ", team=" + team +
                 '}';
     }
 }

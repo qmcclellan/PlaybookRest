@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeamDao extends JpaRepository<Team,Integer> {
 
+    public Team findByCoach(Integer coachId);
+
 }

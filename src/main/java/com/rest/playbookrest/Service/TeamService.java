@@ -19,21 +19,26 @@ public class TeamService implements Services<Team> {
 
     @Override
     public List<Team> findAll() {
-        return null;
+        return teamDao.findAll();
     }
 
     @Override
     public Team retrieve(Integer id) {
-        return null;
+        return teamDao.getReferenceById(id);
     }
 
     @Override
     public Team saveAndFlush(Team team) {
-        return null;
+        return teamDao.saveAndFlush(team);
     }
 
     @Override
     public void deleteById(Integer id) {
 
+        teamDao.deleteById(id);
+    }
+
+    public Team findByCoach(Integer coachId){
+        return teamDao.findByCoach(coachId);
     }
 }

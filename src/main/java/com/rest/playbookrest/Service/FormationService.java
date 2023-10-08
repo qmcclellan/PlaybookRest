@@ -19,21 +19,36 @@ public class FormationService implements Services<Formation>{
 
     @Override
     public List<Formation> findAll() {
-        return null;
+        return formationDao.findAll();
     }
 
     @Override
     public Formation retrieve(Integer id) {
-        return null;
+        return formationDao.getReferenceById(id);
     }
 
     @Override
     public Formation saveAndFlush(Formation formation) {
-        return null;
+        return formationDao.saveAndFlush(formation);
     }
 
     @Override
     public void deleteById(Integer id) {
 
+        formationDao.deleteById(id);
+    }
+
+    public Formation findFormationByPlaybookId(Integer playbookId){
+
+       Formation formation = formationDao.findFormationByPlaybookId(playbookId);
+
+       return formation;
+    }
+
+    public List<Formation> findFormationByName(String name){
+
+        List<Formation> formations = formationDao.findFormationByName(name);
+
+        return formations;
     }
 }

@@ -12,7 +12,7 @@ public interface SchemeDao extends JpaRepository<Scheme,Integer> {
 
     public Scheme findByName(String name);
 
-    public Scheme findByFormation(Formation formation);
+    public List<Scheme> findByFormation(Formation formation);
 
     public Scheme findByFormation(Integer formationId);
 
@@ -20,6 +20,6 @@ public interface SchemeDao extends JpaRepository<Scheme,Integer> {
 
     public List<Scheme> findByPlay(Play play);
 
-    public List<Scheme> findByPlay(Integer playId);
+    public Scheme findByPlay(Integer playId);
 
 }

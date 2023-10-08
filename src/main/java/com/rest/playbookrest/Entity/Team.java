@@ -21,6 +21,8 @@ public class Team {
     @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
     List<Playbook> playBooks;
 
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
+    List<Coach> coaches;
     public Team() {
     }
 
@@ -67,6 +69,18 @@ public class Team {
         this.playBooks = playBook;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
     public void addPlayBooks(Playbook ...playbooks){
 
         if(playBooks == null){
@@ -74,6 +88,15 @@ public class Team {
         }
 
         playBooks = Arrays.asList(playbooks);
+    }
+
+    public void addCoaches(Coach ...theCoaches){
+
+        if(coaches == null){
+            coaches= new ArrayList<>();
+        }
+
+       coaches = Arrays.asList(theCoaches);
     }
 
     @Override
