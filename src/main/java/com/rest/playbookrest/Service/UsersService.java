@@ -84,6 +84,8 @@ public class UsersService implements UserDetailsService, Services<Users> {
         return  roles;
     }
 
+
+
     public Role findRoleByName(String name) {
 
         return roleDao.findRoleByName(name);
