@@ -52,9 +52,9 @@ public class PlaybookService implements Services<Playbook>{
         return playbooks;
     }
 
-    public List<Playbook> findByCoach(Integer coachId){
+    public Playbook findByCoach(Integer coachId){
 
-        List<Playbook> playbooks = playbookDao.findByCoach(coachId);
+        Playbook playbooks = playbookDao.findByCoach(coachId);
 
         return playbooks;
     }
@@ -66,9 +66,9 @@ public class PlaybookService implements Services<Playbook>{
         return playbooks;
     }
 
-    public List<Playbook> findByTeam (Team team){
+    public List<Playbook> findByTeam (String teamName){
 
-        List<Playbook> playbooks = playbookDao.findByTeam(team);
+        List<Playbook> playbooks = playbookDao.findByTeam(teamName);
 
         return playbooks;
 

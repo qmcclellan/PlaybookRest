@@ -18,8 +18,6 @@ public interface SchemeDao extends JpaRepository<Scheme,Integer> {
 
     public List<Scheme> findByType(String type);
 
-    public List<Scheme> findByPlay(Play play);
-
     public Scheme findByPlay(Integer playId);
 
 }

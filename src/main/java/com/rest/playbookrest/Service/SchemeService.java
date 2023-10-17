@@ -45,13 +45,6 @@ public class SchemeService implements Services<Scheme>{
         return schemeDao.findByName(name);
     }
 
-    public List<Scheme> findByFormation(Formation formation){
-
-        List<Scheme> schemes = schemeDao.findByFormation(formation);
-
-        return schemes;
-    }
-
     public Scheme findByFormation(Integer formationId){
 
         return schemeDao.findByFormation(formationId);
@@ -60,13 +53,6 @@ public class SchemeService implements Services<Scheme>{
     public List<Scheme> findByType(String type){
 
         List<Scheme> schemes = schemeDao.findByType(type);
-
-        return schemes;
-    }
-
-    public List<Scheme> findByPlay(Play play){
-
-        List<Scheme> schemes = schemeDao.findByPlay(play);
 
         return schemes;
     }

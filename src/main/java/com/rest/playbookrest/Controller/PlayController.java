@@ -1,9 +1,73 @@
 package com.rest.playbookrest.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.rest.playbookrest.Entity.Play;
+import com.rest.playbookrest.Service.PlayService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/Play")
 public class PlayController {
+
+    private PlayService playService;
+
+    @Autowired
+    public PlayController(PlayService playService) {
+        this.playService = playService;
+    }
+
+    @GetMapping("/PlayList")
+    public List<Play> findAll(){
+
+        return playService.findAll();
+    }
+
+    @PostMapping("/AddPlay")
+    public Play addPlay(@RequestBody Play play){
+
+        return playService.saveAndFlush(play);
+    }
+
+    @GetMapping("/GetPlay/{playId}")
+    public Play getPlay(@PathVariable("playId") int playId){
+
+        return playService.retrieve(playId);
+    }
+
+    @GetMapping("/FindByType/{type}")
+    public List<Play> findByType(@PathVariable("type") String type){
+
+        return playService.findByType(type);
+    }
+    @GetMapping("/FindByScheme/{schemeId}")
+    public List<Play> findByScheme(@PathVariable("schemeId") Integer schemeId){
+
+        return playService.findByScheme(schemeId);
+    }
+    @GetMapping("/FindByName/{playName}")
+    public Play findByName(@PathVariable("playName")String playName){
+
+        return playService.findByName(playName);
+    }
+
+    @PutMapping("/UpdatePlay")
+    public Play UpdatePlay(@RequestBody Play play){
+
+        return playService.saveAndFlush(play);
+    }
+
+    @DeleteMapping("/DeletePlay/{playId}")
+    public String deletePlay(@PathVariable("playId") Integer playId){
+
+        if(playId == null){
+
+            return "Play with id of "+playId+" not found!!";
+        }
+
+        playService.deleteById(playId);
+
+        return"Play deleted with id of " + playId;
+    }
 }

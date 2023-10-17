@@ -52,12 +52,6 @@ public class PlayService implements Services<Play> {
         return plays;
     }
 
-    public Play findByScheme(Scheme scheme){
-
-        Play play = playDao.findByScheme(scheme);
-
-        return play;
-    }
 
     public List<Play> findByScheme(Integer schemeId){
 

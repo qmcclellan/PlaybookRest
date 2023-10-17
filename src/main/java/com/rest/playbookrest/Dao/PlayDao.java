@@ -13,8 +13,6 @@ public interface PlayDao extends JpaRepository<Play, Integer> {
 
     public List<Play> findByType(String type);
 
-    public Play findByScheme(Scheme scheme);
-
     public List<Play> findByScheme(Integer schemeId);
 
 

@@ -49,10 +49,8 @@ public class SecurityConfig {
                                 auth
 
                                         .requestMatchers("/Admin/**").hasRole("ADMIN")
-                                        .requestMatchers("/Business/**").hasAnyRole("ADMIN","CUSTOMER","EMPLOYEE")
-                                        .requestMatchers("/Employee/**").hasAnyRole("ADMIN","EMPLOYEE")
-                                        .requestMatchers("/Customer/**").hasAnyRole("ADMIN", "CUSTOMER")
-                                        .requestMatchers( "/User/**").hasAnyRole("ADMIN","CUSTOMER","EMPLOYEE")
+                                        .requestMatchers("/Coach/**").hasAnyRole("ADMIN", "COACH")
+                                        .requestMatchers( "/User/**").hasAnyRole("ADMIN","COACH")
                                         .requestMatchers("/**","/Welcome/**", "/Login/**").permitAll();
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
