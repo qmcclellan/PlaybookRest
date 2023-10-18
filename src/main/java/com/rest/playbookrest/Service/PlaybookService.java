@@ -45,19 +45,7 @@ public class PlaybookService implements Services<Playbook>{
        return playbookDao.findByName(name);
     }
 
-    public List<Playbook> findByCoach(Coach coach){
 
-        List<Playbook> playbooks = playbookDao.findByCoach(coach);
-
-        return playbooks;
-    }
-
-    public Playbook findByCoach(Integer coachId){
-
-        Playbook playbooks = playbookDao.findByCoach(coachId);
-
-        return playbooks;
-    }
 
     public List<Playbook> findByType(String type){
 
@@ -66,18 +54,4 @@ public class PlaybookService implements Services<Playbook>{
         return playbooks;
     }
 
-    public List<Playbook> findByTeam (String teamName){
-
-        List<Playbook> playbooks = playbookDao.findByTeam(teamName);
-
-        return playbooks;
-
-    }
-
-    public List<Playbook> findByTeam (Integer teamId){
-
-        List<Playbook> playbooks = playbookDao.findByTeam(teamId);
-
-        return playbooks;
-    }
 }

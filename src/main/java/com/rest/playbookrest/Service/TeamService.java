@@ -38,7 +38,4 @@ public class TeamService implements Services<Team> {
         teamDao.deleteById(id);
     }
 
-    public Team findByCoach(Integer coachId){
-        return teamDao.findByCoach(coachId);
-    }
 }

@@ -31,11 +31,6 @@ public class TeamController {
         return teamService.retrieve(teamId);
     }
 
-    @GetMapping("/FindByCoach/{coachId}")
-    public Team findByCoach(@PathVariable Integer coachId){
-
-        return teamService.findByCoach(coachId);
-    }
 
     @PutMapping("/UpdateTeam")
     public Team updateTeam(@RequestBody Team team){

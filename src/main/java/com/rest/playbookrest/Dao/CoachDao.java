@@ -10,10 +10,6 @@ import java.util.List;
 @Repository
 public interface CoachDao extends JpaRepository<Coach , Integer> {
 
-    public Users findUsersByCoachId(Integer coachId);
-
-    public List<Playbook> findPlaybooksByCoachId(Integer CoachId);
-
     public List<Coach> findCoachByType(String coachType);
 
     public Coach findCoachByName(String coach);

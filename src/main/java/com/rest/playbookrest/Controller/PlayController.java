@@ -41,11 +41,7 @@ public class PlayController {
 
         return playService.findByType(type);
     }
-    @GetMapping("/FindByScheme/{schemeId}")
-    public List<Play> findByScheme(@PathVariable("schemeId") Integer schemeId){
 
-        return playService.findByScheme(schemeId);
-    }
     @GetMapping("/FindByName/{playName}")
     public Play findByName(@PathVariable("playName")String playName){
 

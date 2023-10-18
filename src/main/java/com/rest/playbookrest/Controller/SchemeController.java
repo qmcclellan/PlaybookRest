@@ -38,21 +38,11 @@ public class SchemeController {
        return schemeService.findByName(schemeName);
     }
 
-    @GetMapping("/FindByFormation/{formationId}")
-    public Scheme findByFormation(@PathVariable("formationId") Integer formationId){
-
-        return schemeService.findByFormation(formationId);
-    }
 
     @GetMapping("/FindByType")
     public List<Scheme> findByType(@PathVariable("type") String type){
 
         return schemeService.findByType(type);
-    }
-
-    @GetMapping("/FindByPlay/{playId}")
-    public Scheme findByPlay(@PathVariable("playId") Integer playId){
-        return schemeService.findByPlay(playId);
     }
 
     @PutMapping("/UpdateScheme")

@@ -47,14 +47,6 @@ public class FormationController {
         return formation;
     }
 
-    @GetMapping("FindFormationByPlaybook/{playbookId}")
-    public Formation findFormationByPlaybookId(@PathVariable("playbookId") Integer playbookId){
-
-        Formation formation = formationService.findFormationByPlaybookId(playbookId);
-
-        return formation;
-    }
-
     @GetMapping("/FormationListByName/{name}")
     public List<Formation> findFormationByName(@PathVariable("name") String name){
 

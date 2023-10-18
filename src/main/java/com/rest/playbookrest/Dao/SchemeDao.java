@@ -12,12 +12,7 @@ public interface SchemeDao extends JpaRepository<Scheme,Integer> {
 
     public Scheme findByName(String name);
 
-    public List<Scheme> findByFormation(Formation formation);
-
-    public Scheme findByFormation(Integer formationId);
-
     public List<Scheme> findByType(String type);
 
-    public Scheme findByPlay(Integer playId);
 
 }

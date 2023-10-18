@@ -62,23 +62,7 @@ public class PlaybookController {
         return playbookService.findByName(bookName);
     }
 
-    @GetMapping("/FindByCoach/{coachId}")
-    public Playbook findByCoach(@PathVariable("coachId") int coachId){
 
-        return playbookService.findByCoach(coachId);
-    }
-
-    @GetMapping("/FindByTeam/{teamId}")
-    public List<Playbook> findByTeam (@PathVariable("teamId") int teamId){
-
-        return playbookService.findByTeam(teamId);
-    }
-
-    @GetMapping("/FindByTeamName/{teamName}")
-    public List<Playbook> findByTeam (@PathVariable("teamName") String teamName){
-
-        return playbookService.findByTeam(teamName);
-    }
 
     @GetMapping("FindByType/{type}")
     public List<Playbook> findByType(@PathVariable("type")String type){

@@ -10,9 +10,6 @@ import java.util.List;
 @Repository
 public interface FormationDao extends JpaRepository<Formation, Integer> {
 
-    public Formation findFormationByPlaybookId(Integer playbookId);
-
     public List<Formation> findFormationByName(String name);
 
-    public List<Scheme> findSchemeByFormationId(Integer formationId);
 }

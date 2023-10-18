@@ -38,12 +38,6 @@ public class FormationService implements Services<Formation>{
         formationDao.deleteById(id);
     }
 
-    public Formation findFormationByPlaybookId(Integer playbookId){
-
-       Formation formation = formationDao.findFormationByPlaybookId(playbookId);
-
-       return formation;
-    }
 
     public List<Formation> findFormationByName(String name){
 
