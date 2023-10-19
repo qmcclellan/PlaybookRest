@@ -2,6 +2,7 @@ package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Formation;
 import com.rest.playbookrest.Service.FormationService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 3.Add logging
  */
 @RestController
-@RequestMapping("/Formation")
+@RequestMapping(value="/Formation", produces = MediaType.APPLICATION_JSON_VALUE)
 public class FormationController {
 
     private FormationService formationService;

@@ -51,7 +51,7 @@ public class SecurityConfig {
                                         .requestMatchers("/Admin/**").hasRole("ADMIN")
                                         .requestMatchers("/Coach/**").hasAnyRole("ADMIN", "COACH")
                                         .requestMatchers( "/User/**").hasAnyRole("ADMIN","COACH")
-                                        .requestMatchers("/**","/Welcome/**", "/Login/**").permitAll();
+                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**","/Formation/**").permitAll();
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();

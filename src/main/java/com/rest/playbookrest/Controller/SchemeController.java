@@ -2,12 +2,13 @@ package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Scheme;
 import com.rest.playbookrest.Service.SchemeService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Scheme")
+@RequestMapping(value ="/Scheme", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SchemeController {
 
     private SchemeService schemeService;

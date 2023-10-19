@@ -3,12 +3,13 @@ package com.rest.playbookrest.Controller;
 import com.rest.playbookrest.Entity.Users;
 import com.rest.playbookrest.Service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping(value ="/User", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UsersController {
 
    private UsersService usersService;

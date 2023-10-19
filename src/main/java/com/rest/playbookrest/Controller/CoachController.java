@@ -3,6 +3,7 @@ package com.rest.playbookrest.Controller;
 import com.rest.playbookrest.Entity.Coach;
 import com.rest.playbookrest.Service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/Coach")
+@RequestMapping(value= "/Coach", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CoachController {
 
     private CoachService coachService;

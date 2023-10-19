@@ -1,12 +1,16 @@
 package com.rest.playbookrest.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(schema="\"Playbook\"", name="\"formation\"")
-public class Formation {
+public class Formation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +23,9 @@ public class Formation {
     @JoinColumn(name = "playbook_id")
     Playbook playBook;
 
+    @Transient
     @OneToMany(mappedBy = "formation")
+    @Fetch(FetchMode.SELECT)
     private List<Scheme> schemes;
 
 
@@ -78,5 +84,15 @@ public class Formation {
 
     public void setSchemes(List<Scheme> schemes) {
         this.schemes = schemes;
+    }
+
+    @Override
+    public String toString() {
+        return "Formation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", playBook=" + playBook +
+                ", schemes=" + schemes +
+                '}';
     }
 }

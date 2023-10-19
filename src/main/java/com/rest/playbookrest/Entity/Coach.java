@@ -1,14 +1,16 @@
 package com.rest.playbookrest.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Table(schema="\"Playbook\"", name="\"Coach\"")
-public class Coach {
+public class Coach implements Serializable {
 
     private enum CoachType{HEAD, ASSISTANT, OFFENSE, DEFENSE,SPECIAL_TEAMS, }
 
@@ -25,11 +27,13 @@ public class Coach {
 
     @OneToOne
     private Users user;
+    @Transient
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
-
+    @Transient
     @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name="team")
+    @JsonBackReference
     private Team team;
 
     public Coach() {

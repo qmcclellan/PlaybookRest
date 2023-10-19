@@ -2,12 +2,13 @@ package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Team;
 import com.rest.playbookrest.Service.TeamService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Team")
+@RequestMapping(value = "/Team", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TeamController {
 
     private TeamService teamService;

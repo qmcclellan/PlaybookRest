@@ -1,14 +1,17 @@
 package com.rest.playbookrest.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Table(schema="\"Playbook\"", name="\"playbook\"")
-public class Playbook {
+public class Playbook implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class Playbook {
     @JoinColumn(name="team")
     private Team team;
 
+    @Transient
     @OneToMany(mappedBy = "playBook")
     private List<Formation> formations;
 

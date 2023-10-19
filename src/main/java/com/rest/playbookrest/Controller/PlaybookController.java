@@ -5,12 +5,13 @@ import com.rest.playbookrest.Entity.Play;
 import com.rest.playbookrest.Entity.Playbook;
 import com.rest.playbookrest.Service.PlaybookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Playbook")
+@RequestMapping(value ="/Playbook",produces = MediaType.APPLICATION_JSON_VALUE)
 public class PlaybookController {
 
     private PlaybookService playbookService;

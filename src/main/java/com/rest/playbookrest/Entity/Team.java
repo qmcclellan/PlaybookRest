@@ -1,14 +1,16 @@
 package com.rest.playbookrest.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Table(schema="\"Playbook\"", name="\"team\"")
-public class Team {
+public class Team implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,11 +19,13 @@ public class Team {
     private String name;
     @Column(name="image")
     private String image;
-
-    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
+    @Transient
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     List<Playbook> playBooks;
-
-    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
+    @Transient
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     List<Coach> coaches;
     public Team() {
     }
@@ -105,6 +109,8 @@ public class Team {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
+                ", playBooks=" + getPlayBooks() +
+                ", coaches=" + getCoaches() +
                 '}';
     }
 }

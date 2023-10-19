@@ -3,12 +3,13 @@ package com.rest.playbookrest.Controller;
 import com.rest.playbookrest.Entity.Play;
 import com.rest.playbookrest.Service.PlayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Play")
+@RequestMapping(value ="/Play", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PlayController {
 
     private PlayService playService;

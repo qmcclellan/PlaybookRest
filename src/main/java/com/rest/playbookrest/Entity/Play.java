@@ -2,9 +2,11 @@ package com.rest.playbookrest.Entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(schema = "\"Playbook\"", name = "\"play\"")
-public class Play {
+public class Play implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +27,7 @@ public class Play {
     @Column(name="play_type")
     private String type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "scheme", nullable = false)
     private Scheme scheme;
 

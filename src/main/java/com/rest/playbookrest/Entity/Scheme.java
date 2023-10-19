@@ -2,13 +2,14 @@ package com.rest.playbookrest.Entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Table(schema="\"Playbook\"", name="\"scheme\"")
-public class Scheme {
+public class Scheme implements Serializable {
 
 
     private enum SchemeType{}
@@ -21,11 +22,11 @@ public class Scheme {
     @Column(name="type")
     private String type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="formation_id")
     private Formation formation;
-
-    @OneToMany(mappedBy = "scheme")
+    @Transient
+    @OneToMany(mappedBy = "scheme", fetch = FetchType.EAGER)
     private List<Play> plays;
 
     public Scheme() {
@@ -99,8 +100,9 @@ public class Scheme {
         return "Scheme{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type=" + type +
-                ", formations=" + formation +
+                ", type='" + type + '\'' +
+                ", formation=" + formation +
+                ", plays=" + plays +
                 '}';
     }
 }

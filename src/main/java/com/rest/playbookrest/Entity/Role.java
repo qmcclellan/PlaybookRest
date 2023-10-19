@@ -2,17 +2,20 @@ package com.rest.playbookrest.Entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="role", schema="\"Playbook\"")
-public class Role {
+public class Role implements Serializable {
     @Id
     @Column(name="id")
     private Integer id;
 
     @Column(name="name")
     private String name;
+
+    @Transient
     @ManyToMany(mappedBy = "roles")
     private List<Users> users;
 

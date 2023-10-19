@@ -3,11 +3,12 @@ package com.rest.playbookrest.Entity;
 import jakarta.persistence.*;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="\"user\"", schema="\"Playbook\"")
-public class Users {
+public class Users implements Serializable {
 
     @Id
     private Integer id;
