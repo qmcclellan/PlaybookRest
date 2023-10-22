@@ -51,5 +51,9 @@ public class SchemeService implements Services<Scheme>{
 
         return schemes;
     }
+//    public List<Scheme> findByFormationId(Integer formationId){
+//
+//        return schemeDao.findAllByFormationId(formationId);
+//    }
 
 }

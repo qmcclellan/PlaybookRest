@@ -1,6 +1,7 @@
 package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Scheme;
+import com.rest.playbookrest.Service.FormationService;
 import com.rest.playbookrest.Service.SchemeService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,11 @@ public class SchemeController {
 
     private SchemeService schemeService;
 
-    public SchemeController(SchemeService schemeService) {
+    private FormationService formationService;
+
+    public SchemeController(SchemeService schemeService, FormationService formationService) {
         this.schemeService = schemeService;
+        this.formationService = formationService;
     }
 
     @GetMapping("/SchemeList")

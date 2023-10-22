@@ -1,11 +1,14 @@
 package com.rest.playbookrest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.WhereJoinTable;
+import org.springframework.data.annotation.QueryAnnotation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,14 +22,13 @@ public class Formation implements Serializable {
     @Column(name="name")
     private String name;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "playbook_id")
     Playbook playBook;
-
-    @Transient
-    @OneToMany(mappedBy = "formation")
-    @Fetch(FetchMode.SELECT)
-    private List<Scheme> schemes;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Scheme> schemes = new ArrayList<>();
 
 
 
@@ -86,13 +88,24 @@ public class Formation implements Serializable {
         this.schemes = schemes;
     }
 
+    public void addSchemes(List<Scheme> scheme){
+
+        if(schemes == null){
+
+            schemes = new ArrayList<>();
+        }
+
+        schemes.addAll(schemes);
+
+
+    }
+
     @Override
     public String toString() {
         return "Formation{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", playBook=" + playBook +
-                ", schemes=" + schemes +
                 '}';
     }
 }

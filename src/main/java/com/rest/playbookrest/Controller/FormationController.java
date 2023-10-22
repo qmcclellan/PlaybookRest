@@ -2,6 +2,8 @@ package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Formation;
 import com.rest.playbookrest.Service.FormationService;
+import com.rest.playbookrest.Service.SchemeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +20,16 @@ public class FormationController {
 
     private FormationService formationService;
 
-    public FormationController(FormationService formationService) {
+    private SchemeService schemeService;
+
+  //  public FormationController(FormationService formationService) {
+//        this.formationService = formationService;
+//    }
+
+    @Autowired
+    public FormationController(FormationService formationService, SchemeService schemeService) {
         this.formationService = formationService;
+        this.schemeService = schemeService;
     }
 
     @GetMapping("/FormationList")

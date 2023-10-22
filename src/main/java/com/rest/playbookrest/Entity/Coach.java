@@ -2,6 +2,7 @@ package com.rest.playbookrest.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -28,12 +29,12 @@ public class Coach implements Serializable {
     @OneToOne
     private Users user;
     @Transient
+    @JsonManagedReference
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
-    @Transient
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinColumn(name="team")
     @JsonBackReference
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name="team")
     private Team team;
 
     public Coach() {

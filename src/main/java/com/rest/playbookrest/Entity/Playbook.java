@@ -21,14 +21,17 @@ public class Playbook implements Serializable {
     @Column(name = "type")
     private String type;
 
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @Transient
+    @JsonBackReference
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="coach")
     private Coach coach;
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JsonBackReference
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="team")
     private Team team;
 
-    @Transient
+    @JsonManagedReference
     @OneToMany(mappedBy = "playBook")
     private List<Formation> formations;
 

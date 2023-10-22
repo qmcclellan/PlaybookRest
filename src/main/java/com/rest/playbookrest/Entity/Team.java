@@ -19,13 +19,11 @@ public class Team implements Serializable {
     private String name;
     @Column(name="image")
     private String image;
-    @Transient
-    @OneToMany(mappedBy="team",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
     List<Playbook> playBooks;
-    @Transient
-    @OneToMany(mappedBy="team",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
     List<Coach> coaches;
     public Team() {
     }
