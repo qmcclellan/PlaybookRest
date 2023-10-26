@@ -29,9 +29,6 @@ public class SecurityConfig {
     @Autowired
     private CustomAuthentication authProvider;
 
-    @Autowired
-    private SuccessHandler SuccessHandler;
-
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
@@ -43,32 +40,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests((auth) -> {
+        http.csrf(Customizer.withDefaults())
+
+                .authorizeHttpRequests((auth) -> {
 
                             try {
                                 auth
-
+                    //Add method security on the mappings in controller classes
                                         .requestMatchers("/Admin/**").hasRole("ADMIN")
                                         .requestMatchers("/Coach/**").hasAnyRole("ADMIN", "COACH")
-                                        .requestMatchers( "/User/**").hasAnyRole("ADMIN","COACH")
-                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**","/Formation/**").permitAll();
+                                        .requestMatchers( "/User/**","/Formation/**").hasAnyRole("ADMIN","COACH")
+                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**").permitAll();
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                         }
 
-                ).formLogin(form -> form
-                        .loginPage("/Login/SignIn")
-                        .loginProcessingUrl("/authenticateTheUser")
-                        .successHandler(SuccessHandler)
-                        .permitAll()
-                )
-                .logout((logout) -> logout
-                        .logoutSuccessUrl("/Login/LoginPage")
-                        .permitAll())
-                .exceptionHandling((exceptionHandling) -> exceptionHandling
-                        .accessDeniedPage("/access-denied")
+                ).formLogin(Customizer.withDefaults()
                 )
                 .httpBasic(Customizer.withDefaults());
 

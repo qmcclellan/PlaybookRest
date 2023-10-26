@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class UsersService implements UserDetailsService, Services<Users> {
     private UsersDao usersDao;
 
     private RoleDao roleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UsersService(UsersDao usersDao, RoleDao roleDao) {
         this.usersDao = usersDao;
@@ -57,6 +61,9 @@ public class UsersService implements UserDetailsService, Services<Users> {
 
     @Override
     public Users saveAndFlush(Users users) {
+
+        users.setPassword(passwordEncoder.encode(users.getPassword()));
+
         return usersDao.saveAndFlush(users);
     }
 
@@ -66,6 +73,8 @@ public class UsersService implements UserDetailsService, Services<Users> {
         Users user= usersDao.getReferenceById(id);
 
         user.setEnabled(false);
+
+        usersDao.save(user);
     }
 
     public Users findByUserName(String userName){

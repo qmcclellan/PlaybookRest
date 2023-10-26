@@ -11,10 +11,11 @@ import java.util.List;
 public class Users implements Serializable {
 
     @Id
+    @Column(name="id")
     private Integer id;
-    @Column(name="username")
+    @Column(name="name")
     private String userName;
-    @Column(name="password")
+    @Column(name="pass")
     private String password;
 
     @Column(name="enabled")
@@ -23,7 +24,7 @@ public class Users implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "\"users_roles\"", schema="\"Playbook\"",
-    joinColumns= @JoinColumn(name = "users_id"),
+    joinColumns= @JoinColumn(name = "user_id"),
     inverseJoinColumns=@JoinColumn(name="role_id"))
     private List<Role> roles;
 
