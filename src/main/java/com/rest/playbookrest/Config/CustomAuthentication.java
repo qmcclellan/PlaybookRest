@@ -35,7 +35,7 @@ public class CustomAuthentication  implements AuthenticationProvider {
 
         Users user =  usersService.findByUserName(username);
         // System.out.println(username);
-        // System.out.println(pwd);
+         //System.out.println(pwd);
 
         // System.out.println(user.getPassword().trim());
 

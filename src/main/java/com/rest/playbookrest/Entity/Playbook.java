@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Table(schema="\"Playbook\"", name="\"playbook\"")
+@Table(schema="\"Playbook\"", name="\"playbooks\"")
 public class Playbook implements Serializable {
 
     @Id

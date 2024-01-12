@@ -79,6 +79,8 @@ public class UsersService implements UserDetailsService, Services<Users> {
 
     public Users findByUserName(String userName){
 
+        System.out.println(userName);
+
         Users user = usersDao.findByUserName(userName);
 
         return user;

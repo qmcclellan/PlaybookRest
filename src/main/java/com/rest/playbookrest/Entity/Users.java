@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="\"user\"", schema="\"Playbook\"")
+@Table(schema="\"Playbook\"", name="\"user\"")
 public class Users implements Serializable {
 
     @Id

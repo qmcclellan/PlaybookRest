@@ -2,10 +2,8 @@ package com.rest.playbookrest.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -52,7 +50,7 @@ public class SecurityConfig {
                                         .requestMatchers("/Admin/**").hasRole("ADMIN")
                                         .requestMatchers("/Coach/**").hasAnyRole("ADMIN", "COACH")
                                         .requestMatchers( "/User/**","/Formation/**").hasAnyRole("ADMIN","COACH")
-                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**","/Jobs/**").permitAll();
+                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**").permitAll();
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();

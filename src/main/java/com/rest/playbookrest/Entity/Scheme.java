@@ -27,7 +27,7 @@ public class Scheme implements Serializable {
     @JoinColumn(name = "formation_id")
     private Formation formation;
     @Transient
-    @OneToMany(mappedBy = "scheme")
+    @OneToMany(mappedBy = "scheme", fetch = FetchType.LAZY)
     private List<Play> plays;
 
     public Scheme() {
