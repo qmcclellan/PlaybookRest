@@ -1,22 +1,24 @@
 package com.rest.playbookrest.Config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
     @Primary
-    @Bean(name = "appDataSource")
+    @Bean(name = "dataSource")
     @ConfigurationProperties(prefix="spring.datasource")
-    public DataSource appDataSource(){
+    public DataSource dataSource(){
         return DataSourceBuilder.create().build();
     }
 
@@ -26,13 +28,22 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "entityManagerFactory")
-    @ConfigurationProperties(prefix="spring.data.jpa.entity")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, DataSource appDataSource){
-        return builder
-                .dataSource(appDataSource)
-                .build();
-    }
+//    @Bean(name = "entityManagerFactory")
+//    @ConfigurationProperties(prefix="spring.data.jpa.entity")
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("dataSource")DataSource dataSource){
+//        return builder
+//                .dataSource(dataSource)
+//                .build();
+//    }
 
+
+
+    @Bean
+    public PlatformTransactionManager transactionManager(@Qualifier("dataSource")DataSource dataSource){
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setDataSource(dataSource);
+
+        return transactionManager;
+    }
 
 }

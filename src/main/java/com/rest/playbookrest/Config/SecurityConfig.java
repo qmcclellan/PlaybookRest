@@ -52,7 +52,7 @@ public class SecurityConfig {
                                         .requestMatchers("/Admin/**").hasRole("ADMIN")
                                         .requestMatchers("/Coach/**").hasAnyRole("ADMIN", "COACH")
                                         .requestMatchers( "/User/**","/Formation/**").hasAnyRole("ADMIN","COACH")
-                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**").permitAll();
+                                        .requestMatchers("/**","/Welcome/**", "/Login/**","/Team/**","/Playbook/**", "/Play/**","/Scheme/**","/Jobs/**").permitAll();
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();
