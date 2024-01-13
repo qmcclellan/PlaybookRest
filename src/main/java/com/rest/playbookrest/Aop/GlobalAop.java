@@ -1,4 +1,4 @@
-package com.rest.playbookrest.Logging;
+package com.rest.playbookrest.Aop;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

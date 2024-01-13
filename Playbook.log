@@ -2947,3 +2947,45 @@ java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the i
 2024-01-12T16:55:31.059-05:00  INFO 17564 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-01-12T16:55:31.059-05:00  INFO 17564 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-01-12T16:55:31.061-05:00  INFO 17564 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-01-12T21:57:54.334-05:00  INFO 17564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-01-12T21:57:54.340-05:00  INFO 17564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-01-12T21:57:54.341-05:00  INFO 17564 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-12T21:57:54.351-05:00  INFO 17564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-12T21:57:54.354-05:00  INFO 17564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-12T21:58:03.801-05:00  INFO 12300 --- [restartedMain] c.r.p.PlaybookRestApplication            : Starting PlaybookRestApplication using Java 17.0.2 with PID 12300 (C:\Users\qmccl\Programs_By_Language\Java\SpringBoot\Rest\PlaybookRest\PlaybookRest\target\classes started by qmccl in C:\Users\qmccl\Programs_By_Language\Java\SpringBoot\Rest\PlaybookRest\PlaybookRest)
+2024-01-12T21:58:03.813-05:00  INFO 12300 --- [restartedMain] c.r.p.PlaybookRestApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-01-12T21:58:03.872-05:00  INFO 12300 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-12T21:58:03.872-05:00  INFO 12300 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-12T21:58:05.196-05:00  INFO 12300 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-12T21:58:05.308-05:00  INFO 12300 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 8 JPA repository interfaces.
+2024-01-12T21:58:06.233-05:00  INFO 12300 --- [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2024-01-12T21:58:06.250-05:00  INFO 12300 --- [restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2024-01-12T21:58:06.250-05:00  INFO 12300 --- [restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2024-01-12T21:58:06.343-05:00  INFO 12300 --- [restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2024-01-12T21:58:06.344-05:00  INFO 12300 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2471 ms
+2024-01-12T21:58:06.673-05:00  INFO 12300 --- [restartedMain] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2024-01-12T21:58:07.452-05:00  INFO 12300 --- [restartedMain] c.z.h.p.HikariPool                       : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@708c0e8b
+2024-01-12T21:58:07.455-05:00  INFO 12300 --- [restartedMain] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2024-01-12T21:58:07.516-05:00  INFO 12300 --- [restartedMain] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-12T21:58:07.610-05:00  INFO 12300 --- [restartedMain] o.h.Version                              : HHH000412: Hibernate ORM core version 6.2.9.Final
+2024-01-12T21:58:07.613-05:00  INFO 12300 --- [restartedMain] o.h.c.Environment                        : HHH000406: Using bytecode reflection optimizer
+2024-01-12T21:58:07.840-05:00  INFO 12300 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-12T21:58:08.043-05:00  INFO 12300 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-12T21:58:08.638-05:00  INFO 12300 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-12T21:58:09.663-05:00  INFO 12300 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-12T21:58:09.667-05:00  INFO 12300 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-12T21:58:10.229-05:00  INFO 12300 --- [restartedMain] o.s.d.j.r.q.QueryEnhancerFactory         : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-01-12T21:58:10.855-05:00  WARN 12300 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-12T21:58:11.365-05:00  INFO 12300 --- [restartedMain] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 14 endpoint(s) beneath base path '/actuator'
+2024-01-12T21:58:11.439-05:00  INFO 12300 --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4574f326, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@61053ad, org.springframework.security.web.context.SecurityContextHolderFilter@695102, org.springframework.security.web.header.HeaderWriterFilter@403ace3d, org.springframework.security.web.csrf.CsrfFilter@40269b6f, org.springframework.security.web.authentication.logout.LogoutFilter@7438c43f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@ec221e1, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@11722c96, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@cd7990a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@35decf3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9bb1ddf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c506e22, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68acca5d, org.springframework.security.web.access.ExceptionTranslationFilter@63b35fbc, org.springframework.security.web.access.intercept.AuthorizationFilter@488f8bc6]
+2024-01-12T21:58:11.795-05:00  INFO 12300 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-12T21:58:11.887-05:00  INFO 12300 --- [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-12T21:58:11.905-05:00  INFO 12300 --- [restartedMain] c.r.p.PlaybookRestApplication            : Started PlaybookRestApplication in 8.786 seconds (process running for 10.219)
+2024-01-12T21:58:12.452-05:00  INFO 12300 --- [RMI TCP Connection(1)-192.168.2.2] c.z.h.HikariDataSource                   : HikariPool-2 - Starting...
+2024-01-12T21:58:12.883-05:00  INFO 12300 --- [RMI TCP Connection(1)-192.168.2.2] c.z.h.p.HikariPool                       : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@78382ce8
+2024-01-12T21:58:12.884-05:00  INFO 12300 --- [RMI TCP Connection(1)-192.168.2.2] c.z.h.HikariDataSource                   : HikariPool-2 - Start completed.
+2024-01-12T22:13:29.940-05:00  INFO 12300 --- [SpringApplicationShutdownHook] c.z.h.HikariDataSource                   : HikariPool-2 - Shutdown initiated...
+2024-01-12T22:13:29.948-05:00  INFO 12300 --- [SpringApplicationShutdownHook] c.z.h.HikariDataSource                   : HikariPool-2 - Shutdown completed.
+2024-01-12T22:13:29.951-05:00  INFO 12300 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-12T22:13:29.955-05:00  INFO 12300 --- [SpringApplicationShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2024-01-12T22:13:29.959-05:00  INFO 12300 --- [SpringApplicationShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
