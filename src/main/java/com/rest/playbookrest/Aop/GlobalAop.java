@@ -8,12 +8,13 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Aspect
-@Component
+@Configuration
 public class GlobalAop {
 
     Logger logger = LogManager.getLogger(this.getClass());
@@ -32,7 +33,7 @@ public class GlobalAop {
             + " || within(com.rest.playbookrest.Controller.*.*)"
             + " || within(com.rest.playbookrest.Dto.*.*)")
     public void applicationPackagePointcut() {
-        throw new UnsupportedOperationException();
+      //  throw new UnsupportedOperationException();
     }
 
     @AfterThrowing(pointcut = "applicationPackagePointcut() && springBeanPointcut()", throwing = "e")
@@ -44,9 +45,12 @@ public class GlobalAop {
     @Around("applicationPackagePointcut() && springBeanPointcut()")
     public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
         final String joinPoints = Arrays.toString(joinPoint.getArgs());
+
+        logger.info("==============>>>>>>"+joinPoint.getSignature().getClass()+"*******************");
+
         if (joinPoints != null) {
             logger.info("Enter: {}.{}() with argument[s] = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                    joinPoint.getSignature().getName(), joinPoints);
+                    joinPoint.getSignature().getName(), joinPoints +"************");
         }
         final Object result = joinPoint.proceed();
         logger.info("Exit: {}.{}() with result = {}", joinPoint.getSignature().getDeclaringTypeName(),

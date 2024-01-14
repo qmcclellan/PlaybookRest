@@ -1,0 +1,42 @@
+2024-01-13 23:44:01 INFO  PlaybookRestApplication:51 - Starting PlaybookRestApplication using Java 17.0.2 with PID 1952 (C:\Users\qmccl\Programs_By_Language\Java\SpringBoot\Rest\PlaybookRest\PlaybookRest\target\classes started by qmccl in C:\Users\qmccl\Programs_By_Language\Java\SpringBoot\Rest\PlaybookRest\PlaybookRest)
+2024-01-13 23:44:01 INFO  PlaybookRestApplication:637 - No active profile set, falling back to 1 default profile: "default"
+2024-01-13 23:44:01 INFO  DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-13 23:44:01 INFO  DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-13 23:44:03 INFO  RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-13 23:44:03 INFO  RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 108 ms. Found 8 JPA repository interfaces.
+2024-01-13 23:44:04 INFO  TomcatWebServer:108 - Tomcat initialized with port(s): 8080 (http)
+2024-01-13 23:44:04 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-13 23:44:04 INFO  StandardService:173 - Starting service [Tomcat]
+2024-01-13 23:44:04 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.13]
+2024-01-13 23:44:04 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-01-13 23:44:04 INFO  ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2829 ms
+2024-01-13 23:44:04 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-01-13 23:44:05 INFO  HikariPool:565 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43372d8b
+2024-01-13 23:44:05 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-01-13 23:44:05 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-13 23:44:05 INFO  Version:44 - HHH000412: Hibernate ORM core version 6.2.9.Final
+2024-01-13 23:44:05 INFO  Environment:191 - HHH000406: Using bytecode reflection optimizer
+2024-01-13 23:44:05 INFO  BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2024-01-13 23:44:06 INFO  SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-13 23:44:06 INFO  BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2024-01-13 23:44:07 INFO  JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-13 23:44:07 INFO  LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-13 23:44:08 INFO  QueryEnhancerFactory:47 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-01-13 23:44:09 WARN  JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-13 23:44:09 INFO  EndpointLinksResolver:58 - Exposing 14 endpoint(s) beneath base path '/actuator'
+2024-01-13 23:44:09 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@72f9ee52, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4d6a7de1, org.springframework.security.web.context.SecurityContextHolderFilter@2227c1dc, org.springframework.security.web.header.HeaderWriterFilter@1c8721b0, org.springframework.security.web.csrf.CsrfFilter@57c537f8, org.springframework.security.web.authentication.logout.LogoutFilter@4bcc9ac8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@63345e28, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1a0bb53a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@140e6e2b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2de249cd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@773de68d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5feec215, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37de987c, org.springframework.security.web.access.ExceptionTranslationFilter@11325445, org.springframework.security.web.access.intercept.AuthorizationFilter@3a4529ac]
+2024-01-13 23:44:10 INFO  OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2024-01-13 23:44:10 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-8080"]
+2024-01-13 23:44:10 INFO  TomcatWebServer:220 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-13 23:44:10 INFO  PlaybookRestApplication:57 - Started PlaybookRestApplication in 9.534 seconds (process running for 10.98)
+2024-01-13 23:44:10 INFO  HikariDataSource:110 - HikariPool-2 - Starting...
+2024-01-13 23:44:11 INFO  HikariPool:565 - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@1c65eead
+2024-01-13 23:44:11 INFO  HikariDataSource:123 - HikariPool-2 - Start completed.
+2024-01-13 23:44:23 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-13 23:44:23 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-01-13 23:44:23 INFO  DispatcherServlet:554 - Completed initialization in 4 ms
+2024-01-13 23:45:31 INFO  HikariDataSource:350 - HikariPool-2 - Shutdown initiated...
+2024-01-13 23:45:31 INFO  HikariDataSource:352 - HikariPool-2 - Shutdown completed.
+2024-01-13 23:45:31 INFO  LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-13 23:45:31 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-01-13 23:45:31 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
