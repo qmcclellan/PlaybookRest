@@ -22,9 +22,9 @@ public class Team implements Serializable {
     @JsonManagedReference
     @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
     List<Playbook> playBooks;
-    @JsonManagedReference
-    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
-    List<Coach> coaches;
+//    @JsonManagedReference
+//    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
+//    List<Coach> coaches;
     public Team() {
     }
 
@@ -75,13 +75,13 @@ public class Team implements Serializable {
         this.id = id;
     }
 
-    public List<Coach> getCoaches() {
-        return coaches;
-    }
-
-    public void setCoaches(List<Coach> coaches) {
-        this.coaches = coaches;
-    }
+//    public List<Coach> getCoaches() {
+//        return coaches;
+//    }
+//
+//    public void setCoaches(List<Coach> coaches) {
+//        this.coaches = coaches;
+//    }
 
     public void addPlayBooks(Playbook ...playbooks){
 
@@ -92,14 +92,14 @@ public class Team implements Serializable {
         playBooks = Arrays.asList(playbooks);
     }
 
-    public void addCoaches(Coach ...theCoaches){
-
-        if(coaches == null){
-            coaches= new ArrayList<>();
-        }
-
-       coaches = Arrays.asList(theCoaches);
-    }
+//    public void addCoaches(Coach ...theCoaches){
+//
+//        if(coaches == null){
+//            coaches= new ArrayList<>();
+//        }
+//
+//       coaches = Arrays.asList(theCoaches);
+//    }
 
     @Override
     public String toString() {
@@ -108,7 +108,7 @@ public class Team implements Serializable {
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
                 ", playBooks=" + getPlayBooks() +
-                ", coaches=" + getCoaches() +
+               // ", coaches=" + getCoaches() +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Table(schema="\"Playbook\"", name="\"Coach\"")
+@Table(schema="\"Playbook\"", name="\"coach\"")
 public class Coach implements Serializable {
 
     private enum CoachType{HEAD, ASSISTANT, OFFENSE, DEFENSE,SPECIAL_TEAMS, }
@@ -20,7 +20,8 @@ public class Coach implements Serializable {
     private Integer id;
     @Column(name="name")
     private String name;
-    @Column(name="type")
+    @Enumerated(value=EnumType.STRING)
+    @Column(name="coach_type")
     private CoachType type;
 
     @Column(name="image")
@@ -32,10 +33,10 @@ public class Coach implements Serializable {
     @JsonManagedReference
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
-    @JsonBackReference
-    @ManyToOne(cascade = {CascadeType.MERGE})
-    @JoinColumn(name="team")
-    private Team team;
+//    @JsonBackReference
+//    @ManyToOne(cascade = {CascadeType.MERGE})
+//    @JoinColumn(name="team")
+//    private Team team;
 
     public Coach() {
     }
@@ -47,12 +48,12 @@ public class Coach implements Serializable {
         this.user = user;
     }
 
-    public Coach(String name, CoachType type, Users user, Team team) {
-        this.name = name;
-        this.type = type;
-        this.user = user;
-        this.team = team;
-    }
+//    public Coach(String name, CoachType type, Users user, Team team) {
+//        this.name = name;
+//        this.type = type;
+//        this.user = user;
+//        this.team = team;
+//    }
 
     public Coach(String name, CoachType type, String imagePath) {
         this.name = name;
@@ -60,13 +61,13 @@ public class Coach implements Serializable {
         this.imagePath = imagePath;
     }
 
-    public Coach(String name, CoachType type,Team team, String imagePath) {
-        this.name = name;
-        this.type = type;
-        this.team = team;
-        this.imagePath = imagePath;
-
-    }
+//    public Coach(String name, CoachType type,Team team, String imagePath) {
+//        this.name = name;
+//        this.type = type;
+//        this.team = team;
+//        this.imagePath = imagePath;
+//
+//    }
     public Coach(String name, CoachType type, String imagePath, Users user) {
         this.name = name;
         this.type = type;
@@ -74,30 +75,30 @@ public class Coach implements Serializable {
         this.user = user;
     }
 
-    public Coach(String name, CoachType type,Team team, String imagePath, Users user) {
-        this.name = name;
-        this.type = type;
-        this.team = team;
-        this.imagePath = imagePath;
-        this.user = user;
-    }
+//    public Coach(String name, CoachType type,Team team, String imagePath, Users user) {
+//        this.name = name;
+//        this.type = type;
+//        this.team = team;
+//        this.imagePath = imagePath;
+//        this.user = user;
+//    }
 
-    public Coach(Integer id, String name, CoachType type,Team team, String imagePath) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.team = team;
-        this.imagePath = imagePath;
-    }
+//    public Coach(Integer id, String name, CoachType type,Team team, String imagePath) {
+//        this.id = id;
+//        this.name = name;
+//        this.type = type;
+//        this.team = team;
+//        this.imagePath = imagePath;
+//    }
 
-    public Coach(Integer id, String name, CoachType type, Team team, String imagePath, Users user) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.team = team;
-        this.imagePath = imagePath;
-        this.user = user;
-    }
+//    public Coach(Integer id, String name, CoachType type, Team team, String imagePath, Users user) {
+//        this.id = id;
+//        this.name = name;
+//        this.type = type;
+//        this.team = team;
+//        this.imagePath = imagePath;
+//        this.user = user;
+//    }
 
     public Integer getId() {
         return id;
@@ -153,13 +154,13 @@ public class Coach implements Serializable {
         playBooks = Arrays.asList(playBooksToAdd);
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
+//    public Team getTeam() {
+//        return team;
+//    }
+//
+//    public void setTeam(Team team) {
+//        this.team = team;
+//    }
 
     @Override
     public String toString() {
@@ -170,7 +171,7 @@ public class Coach implements Serializable {
                 ", imagePath='" + imagePath + '\'' +
                 ", user=" + user +
                 ", playBooks=" + playBooks +
-                ", team=" + team +
+               // ", team=" + team +
                 '}';
     }
 }
