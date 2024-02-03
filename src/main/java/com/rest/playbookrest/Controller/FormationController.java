@@ -15,7 +15,7 @@ import java.util.List;
 3.Add logging
  */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping(value="/Formation", produces = MediaType.APPLICATION_JSON_VALUE)
 public class FormationController {
 

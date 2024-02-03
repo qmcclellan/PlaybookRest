@@ -26,10 +26,12 @@ public class Playbook implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="coach")
     private Coach coach;
+
     @JsonBackReference
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="team")
     private Team team;
+
 
     @JsonManagedReference
     @OneToMany(mappedBy = "playBook")

@@ -23,7 +23,7 @@ public class Play implements Serializable {
     private String cons;
 
     @Column(name = "image")
-    private String imagePath;
+    private String image;
 
     @Column(name="play_type")
     private String type;
@@ -36,55 +36,55 @@ public class Play implements Serializable {
     }
 
 
-    public Play(String name, String pros, String cons, String imagePath, Scheme scheme) {
+    public Play(String name, String pros, String cons, String image, Scheme scheme) {
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.scheme = scheme;
     }
 
-    public Play(Integer id, String name, String pros, String cons, String imagePath, Scheme scheme) {
+    public Play(Integer id, String name, String pros, String cons, String image, Scheme scheme) {
         this.id = id;
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.scheme = scheme;
     }
 
-    public Play(String name, String pros, String cons, String imagePath, String type) {
+    public Play(String name, String pros, String cons, String image, String type) {
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.type = type;
     }
 
-    public Play(Integer id, String name, String pros, String cons, String imagePath, String type) {
+    public Play(Integer id, String name, String pros, String cons, String image, String type) {
         this.id = id;
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.type = type;
     }
 
-    public Play(String name, String pros, String cons, String imagePath, String type, Scheme scheme) {
+    public Play(String name, String pros, String cons, String image, String type, Scheme scheme) {
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.type = type;
         this.scheme = scheme;
     }
 
-    public Play(Integer id, String name, String pros, String cons, String imagePath, String type, Scheme scheme) {
+    public Play(Integer id, String name, String pros, String cons, String image, String type, Scheme scheme) {
         this.id = id;
         this.name = name;
         this.pros = pros;
         this.cons = cons;
-        this.imagePath = imagePath;
+        this.image = image;
         this.type = type;
         this.scheme = scheme;
     }
@@ -121,12 +121,12 @@ public class Play implements Serializable {
         this.cons = cons;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImage() {
+        return image;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage(String imagePath) {
+        this.image = imagePath;
     }
 
     public Scheme getScheme() {
@@ -152,7 +152,7 @@ public class Play implements Serializable {
                 ", name='" + name + '\'' +
                 ", pros='" + pros + '\'' +
                 ", cons='" + cons + '\'' +
-                ", imagePath='" + imagePath + '\'' +
+                ", imagePath='" + image + '\'' +
                 ", type='" + type + '\'' +
                 ", scheme=" + scheme +
                 '}';

@@ -26,7 +26,7 @@ public class Coach implements Serializable {
 
     @Column(name="image")
     private String imagePath;
-@Transient
+
     @OneToOne
     private Users user;
     @Transient

@@ -42,6 +42,13 @@ public class Users implements Serializable {
         this.enabled = enabled;
     }
 
+    public Users(Integer id, String userName, String password, boolean enabled) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     public String getUserName() {
         return userName;
     }
