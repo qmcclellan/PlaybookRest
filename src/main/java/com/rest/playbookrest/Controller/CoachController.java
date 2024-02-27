@@ -57,7 +57,7 @@ public class CoachController {
         return coachService.findCoachByType(coachType);
     }
 
-    @GetMapping("/FindCoachByName{coachName}")
+    @GetMapping("/FindCoachByName/{coachName}")
     public Coach findCoachByName(@PathVariable String coachName){
 
         if(coachName == null){

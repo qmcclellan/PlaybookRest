@@ -95,9 +95,10 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "Users{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                "userName='" + userName +
+                ", password='" + password +
                 ", enabled=" + enabled +
+                ", roles =" + roles +
                 '}';
     }
 }

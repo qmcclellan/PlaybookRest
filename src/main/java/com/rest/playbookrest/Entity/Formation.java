@@ -22,11 +22,11 @@ public class Formation implements Serializable {
     @Column(name="name")
     private String name;
 
-    @JsonBackReference
+
     @ManyToOne
     @JoinColumn(name = "playbook_id")
     Playbook playBook;
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Scheme> schemes = new ArrayList<>();
 
