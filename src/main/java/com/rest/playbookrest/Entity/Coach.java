@@ -30,10 +30,11 @@ public class Coach implements Serializable {
     @OneToOne
     private Users user;
     @Transient
-    @JsonManagedReference
+   // @JsonManagedReference
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     List<Playbook> playBooks;
 //    @JsonBackReference
+//    @Transient
 //    @ManyToOne(cascade = {CascadeType.MERGE})
 //    @JoinColumn(name="team")
 //    private Team team;
@@ -48,7 +49,21 @@ public class Coach implements Serializable {
         this.user = user;
     }
 
-//    public Coach(String name, CoachType type, Users user, Team team) {
+    public Coach(Integer id, String name, CoachType type, Users user) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.user = user;
+    }
+
+    public Coach(Integer id, String name, CoachType type, String imagePath, Users user) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.imagePath = imagePath;
+        this.user = user;
+    }
+    //    public Coach(String name, CoachType type, Users user, Team team) {
 //        this.name = name;
 //        this.type = type;
 //        this.user = user;
@@ -61,13 +76,7 @@ public class Coach implements Serializable {
         this.imagePath = imagePath;
     }
 
-//    public Coach(String name, CoachType type,Team team, String imagePath) {
-//        this.name = name;
-//        this.type = type;
-//        this.team = team;
-//        this.imagePath = imagePath;
-//
-//    }
+
     public Coach(String name, CoachType type, String imagePath, Users user) {
         this.name = name;
         this.type = type;
@@ -75,13 +84,7 @@ public class Coach implements Serializable {
         this.user = user;
     }
 
-//    public Coach(String name, CoachType type,Team team, String imagePath, Users user) {
-//        this.name = name;
-//        this.type = type;
-//        this.team = team;
-//        this.imagePath = imagePath;
-//        this.user = user;
-//    }
+
 
 //    public Coach(Integer id, String name, CoachType type,Team team, String imagePath) {
 //        this.id = id;
@@ -90,7 +93,7 @@ public class Coach implements Serializable {
 //        this.team = team;
 //        this.imagePath = imagePath;
 //    }
-
+//
 //    public Coach(Integer id, String name, CoachType type, Team team, String imagePath, Users user) {
 //        this.id = id;
 //        this.name = name;
@@ -170,7 +173,7 @@ public class Coach implements Serializable {
                 ", type=" + type +
                 ", imagePath='" + imagePath + '\'' +
                 ", user=" + user +
-                ", playBooks=" + playBooks +
+                //", playBooks=" + playBooks +
                // ", team=" + team +
                 '}';
     }

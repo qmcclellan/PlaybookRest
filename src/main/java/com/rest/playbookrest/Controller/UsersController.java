@@ -37,6 +37,12 @@ public class UsersController {
         return usersService.retrieve(userId);
     }
 
+    @GetMapping("/GetUserByName/{userName}")
+    public Users getUser(@PathVariable("userName") String userName){
+
+        return usersService.findByUserName(userName);
+    }
+
     @PutMapping("/UpdateUser")
     public Users updateUser(@RequestBody Users user){
 

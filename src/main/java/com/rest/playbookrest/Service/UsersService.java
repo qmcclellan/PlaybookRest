@@ -4,7 +4,7 @@ import com.rest.playbookrest.Dao.RoleDao;
 import com.rest.playbookrest.Dao.UsersDao;
 import com.rest.playbookrest.Entity.Role;
 import com.rest.playbookrest.Entity.Users;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.User;
@@ -12,14 +12,16 @@ import com.rest.playbookrest.Entity.Users;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.crypto.password.PasswordEncoder;
-import com.rest.playbookrest.Entity.Users;
+//import com.rest.playbookrest.Entity.Users;
+//import com.rest.playbookrest.Entity.Users;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UsersService implements Services<Users> {// UserDetailsService,
+public class UsersService implements Services<Users>{//, UserDetailsService{
 
     private UsersDao usersDao;
 

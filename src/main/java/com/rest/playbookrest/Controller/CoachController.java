@@ -47,6 +47,14 @@ public class CoachController {
         return coach;
     }
 
+    @GetMapping("/GetCoachByUser/{coachId}")
+    public Coach getCoachByUser(@PathVariable int coachId){
+
+        Coach coach = coachService.retrieve(coachId);
+
+        return coach;
+    }
+
     @GetMapping("/FindCoachesByType/{coachType}")
     public List<Coach> findCoachByType(@PathVariable String coachType){
 

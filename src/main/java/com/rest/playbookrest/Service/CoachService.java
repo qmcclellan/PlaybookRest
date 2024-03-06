@@ -2,6 +2,7 @@ package com.rest.playbookrest.Service;
 
 import com.rest.playbookrest.Dao.CoachDao;
 import com.rest.playbookrest.Entity.Coach;
+import com.rest.playbookrest.Entity.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,5 +49,11 @@ public class CoachService implements Services<Coach> {
         Coach coach = coachDao.findCoachByName(name);
 
         return coach;
+    }
+
+    public Coach findCoachByUserId(Integer userId){
+
+        return coachDao.findCoachByUserId(userId);
+
     }
 }

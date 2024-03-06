@@ -15,4 +15,6 @@ public interface CoachDao extends JpaRepository<Coach , Integer> {
     public List<Coach> findCoachByType(String coachType);
 
     public Coach findCoachByName(String coach);
+
+    public Coach findCoachByUserId(Integer userId);
 }
