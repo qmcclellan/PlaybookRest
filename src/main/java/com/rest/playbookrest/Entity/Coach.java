@@ -2,6 +2,7 @@ package com.rest.playbookrest.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -29,15 +30,18 @@ public class Coach implements Serializable {
 
     @OneToOne
     private Users user;
-    @Transient
-   // @JsonManagedReference
+
+    //@Transient
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
+    @JsonManagedReference
+    @JsonIgnoreProperties("coach")
     List<Playbook> playBooks;
-//    @JsonBackReference
-//    @Transient
-//    @ManyToOne(cascade = {CascadeType.MERGE})
-//    @JoinColumn(name="team")
-//    private Team team;
+    @Transient
+    @JsonBackReference
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name="team")
+    @JsonIgnoreProperties("coach")
+    private Team team;
 
     public Coach() {
     }
@@ -62,6 +66,16 @@ public class Coach implements Serializable {
         this.type = type;
         this.imagePath = imagePath;
         this.user = user;
+    }
+
+
+    public Coach(Integer id, String name, CoachType type, String imagePath, Users user, List<Playbook> playBooks) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.imagePath = imagePath;
+        this.user = user;
+        this.playBooks = playBooks;
     }
     //    public Coach(String name, CoachType type, Users user, Team team) {
 //        this.name = name;
@@ -173,7 +187,7 @@ public class Coach implements Serializable {
                 ", type=" + type +
                 ", imagePath='" + imagePath + '\'' +
                 ", user=" + user +
-                //", playBooks=" + playBooks +
+                ", playBooks=" + getPlayBooks() +
                // ", team=" + team +
                 '}';
     }

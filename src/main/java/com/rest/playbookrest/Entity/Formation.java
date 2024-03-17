@@ -2,6 +2,7 @@ package com.rest.playbookrest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.WhereJoinTable;
@@ -22,7 +23,8 @@ public class Formation implements Serializable {
     @Column(name="name")
     private String name;
 
-
+    @JsonBackReference
+    @JsonIgnoreProperties("formations")
     @ManyToOne
     @JoinColumn(name = "playbook_id")
     Playbook playBook;

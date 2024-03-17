@@ -54,4 +54,8 @@ public class PlaybookService implements Services<Playbook>{
         return playbooks;
     }
 
+    public List<Playbook> findByCoachId(Integer coachId){
+
+        return playbookDao.findPlaybooksByCoach_Id(coachId);
+    }
 }

@@ -1,6 +1,8 @@
 package com.rest.playbookrest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -24,12 +26,18 @@ public class Playbook implements Serializable {
 
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="coach")
+    @JsonBackReference
+    @JsonIgnore(value = true)
+    @JsonIgnoreProperties("playBooks")
     private Coach coach;
 
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="team")
+    @JsonBackReference
+    @JsonIgnoreProperties("playBooks")
     private Team team;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "playBook")
     private List<Formation> formations;
 
@@ -144,8 +152,8 @@ public class Playbook implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type=" + type +
-                ", coach=" + coach +
-                ", team=" + team +
+                //", team=" + team +
+                //", coach=" + coach +
                 '}';
     }
 }

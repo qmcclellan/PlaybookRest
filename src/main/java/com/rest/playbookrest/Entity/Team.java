@@ -1,5 +1,6 @@
 package com.rest.playbookrest.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -19,13 +20,16 @@ public class Team implements Serializable {
     private String name;
     @Column(name="image")
     private String image;
+
+    @JsonManagedReference
+    @JsonIgnoreProperties("team")
+    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
+    List<Playbook> playBooks;
+
     @Transient
     @JsonManagedReference
     @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
-    List<Playbook> playBooks;
-//    @JsonManagedReference
-//    @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
-//    List<Coach> coaches;
+    List<Coach> coaches;
     public Team() {
     }
 

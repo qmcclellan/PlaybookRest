@@ -1,7 +1,9 @@
 package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Coach;
+import com.rest.playbookrest.Entity.Playbook;
 import com.rest.playbookrest.Service.CoachService;
+import com.rest.playbookrest.Service.PlaybookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,12 @@ import java.util.List;
 public class CoachController {
 
     private CoachService coachService;
+    private PlaybookService playbookService;
 
     @Autowired
-    public CoachController(CoachService coachService) {
+    public CoachController(CoachService coachService, PlaybookService playbookService) {
         this.coachService = coachService;
+        this.playbookService = playbookService;
     }
 
     @GetMapping("/CoachList")
@@ -42,7 +46,11 @@ public class CoachController {
     @GetMapping("/GetCoach/{coachId}")
     public Coach getCoach(@PathVariable int coachId){
 
+        List<Playbook> playbooks = playbookService.findByCoachId(coachId);
+
         Coach coach = coachService.retrieve(coachId);
+
+        coach.setPlayBooks(playbooks);
 
         return coach;
     }

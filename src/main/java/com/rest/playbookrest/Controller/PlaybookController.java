@@ -71,4 +71,10 @@ public class PlaybookController {
 
         return playbookService.findByType(type);
     }
+
+    @GetMapping("FindByCoachId/{coachId}")
+    public List<Playbook> findByCoachId(@PathVariable("coachId") Integer coachId){
+
+        return playbookService.findByCoachId(coachId);
+    }
 }
