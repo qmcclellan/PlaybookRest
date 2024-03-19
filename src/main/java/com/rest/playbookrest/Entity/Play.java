@@ -154,7 +154,7 @@ public class Play implements Serializable {
                 ", cons='" + cons + '\'' +
                 ", imagePath='" + image + '\'' +
                 ", type='" + type + '\'' +
-                ", scheme=" + scheme +
+               // ", scheme=" + scheme +
                 '}';
     }
 }

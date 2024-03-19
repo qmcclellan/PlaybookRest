@@ -152,6 +152,7 @@ public class Playbook implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type=" + type +
+                ", formations" + formations +
                 //", team=" + team +
                 //", coach=" + coach +
                 '}';

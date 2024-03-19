@@ -30,6 +30,8 @@ public class Formation implements Serializable {
     Playbook playBook;
 
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
+    @JsonIgnoreProperties("formation")
     private List<Scheme> schemes = new ArrayList<>();
 
 
@@ -107,7 +109,7 @@ public class Formation implements Serializable {
         return "Formation{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", playBook=" + playBook +
+               // ", playBook=" + playBook +
                 '}';
     }
 }

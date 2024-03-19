@@ -1,6 +1,8 @@
 package com.rest.playbookrest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -28,6 +30,8 @@ public class Scheme implements Serializable {
     private Formation formation;
 
     @OneToMany(mappedBy = "scheme", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @JsonIgnoreProperties("scheme")
     private List<Play> plays;
 
     public Scheme() {
