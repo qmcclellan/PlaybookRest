@@ -5,30 +5,27 @@ import com.rest.playbookrest.Dao.UsersDao;
 import com.rest.playbookrest.Entity.Role;
 import com.rest.playbookrest.Entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import com.rest.playbookrest.Entity.Users;
-//import com.rest.playbookrest.Entity.Users;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UsersService implements Services<Users>{//, UserDetailsService{
+public class UsersService implements Services<Users>, UserDetailsService {
 
     private UsersDao usersDao;
 
     private RoleDao roleDao;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+
+    private PasswordEncoder passwordEncoder;
 
     public UsersService(UsersDao usersDao, RoleDao roleDao) {
         this.usersDao = usersDao;
@@ -36,21 +33,21 @@ public class UsersService implements Services<Users>{//, UserDetailsService{
     }
 
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Users user = findByUserName(username);
-//        if (user == null) {
-//
-//            throw new UsernameNotFoundException("Invalid username or password.");
-//        }
-//
-//
-//        List<GrantedAuthority>authorities = new ArrayList<>();
-//
-//        authorities.add(new SimpleGrantedAuthority(user.getRoles().toString()));
-//
-//        return new User(user.getUserName(), user.getPassword().trim(), authorities);
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users user = findByUserName(username);
+        if (user == null) {
+
+            throw new UsernameNotFoundException("Invalid username or password.");
+        }
+
+
+        List<GrantedAuthority>authorities = new ArrayList<>();
+
+        authorities.add(new SimpleGrantedAuthority(user.getRoles().toString()));
+
+        return new User(user.getUserName(), user.getPassword().trim(), authorities);
+    }
 
     @Override
     public List<Users> findAll() {
@@ -65,7 +62,7 @@ public class UsersService implements Services<Users>{//, UserDetailsService{
     @Override
     public Users saveAndFlush(Users users) {
 
-//        users.setPassword(passwordEncoder.encode(users.getPassword()));
+            users.setPassword(passwordEncoder.encode(users.getPassword()));
 
         return usersDao.saveAndFlush(users);
     }

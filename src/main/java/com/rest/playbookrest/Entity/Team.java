@@ -28,6 +28,8 @@ public class Team implements Serializable {
 
     @Transient
     @JsonManagedReference
+    @JsonIgnoreProperties(ignoreUnknown = true,
+            value ={"playbooks","team"})
     @OneToMany(mappedBy="team",cascade = CascadeType.ALL)
     List<Coach> coaches;
     public Team() {
@@ -80,13 +82,13 @@ public class Team implements Serializable {
         this.id = id;
     }
 
-//    public List<Coach> getCoaches() {
-//        return coaches;
-//    }
-//
-//    public void setCoaches(List<Coach> coaches) {
-//        this.coaches = coaches;
-//    }
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
 
     public void addPlayBooks(Playbook ...playbooks){
 
@@ -97,14 +99,14 @@ public class Team implements Serializable {
         playBooks = Arrays.asList(playbooks);
     }
 
-//    public void addCoaches(Coach ...theCoaches){
-//
-//        if(coaches == null){
-//            coaches= new ArrayList<>();
-//        }
-//
-//       coaches = Arrays.asList(theCoaches);
-//    }
+    public void addCoaches(Coach ...theCoaches){
+
+        if(coaches == null){
+            coaches= new ArrayList<>();
+        }
+
+       coaches = Arrays.asList(theCoaches);
+    }
 
     @Override
     public String toString() {

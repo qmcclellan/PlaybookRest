@@ -31,7 +31,6 @@ public class Coach implements Serializable {
     @OneToOne
     private Users user;
 
-    //@Transient
     @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY,cascade =CascadeType.MERGE)
     @JsonManagedReference
     @JsonIgnoreProperties("coach")
