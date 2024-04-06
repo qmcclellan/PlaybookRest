@@ -83,6 +83,16 @@ public class CoachController {
         return coachService.findByCoachName(coachName);
     }
 
+    @GetMapping("/FindCoachByUserName/{userName}")
+    public Coach findCoachByUserName(@PathVariable String userName){
+
+        if(userName == null){
+            //Add exception
+        }
+
+        return coachService.findCoachByUserName(userName);
+    }
+
     @PutMapping("/UpdateCoach")
     public Coach updateCoach(@RequestBody Coach coach){
 

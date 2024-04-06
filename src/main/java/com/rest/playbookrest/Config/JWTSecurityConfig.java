@@ -54,7 +54,7 @@ public class JWTSecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
                 .authorizeHttpRequests(auth -> auth

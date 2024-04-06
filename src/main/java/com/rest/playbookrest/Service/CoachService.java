@@ -56,4 +56,8 @@ public class CoachService implements Services<Coach> {
         return coachDao.findCoachByUserId(userId);
 
     }
+
+    public Coach findCoachByUserName(String userNamw){
+        return coachDao.findCoachByUserUserName(userNamw);
+    }
 }
