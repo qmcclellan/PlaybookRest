@@ -16,7 +16,6 @@ import java.util.List;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value= "/Coach", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CoachController {
 
