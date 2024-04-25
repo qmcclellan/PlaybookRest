@@ -1,9 +1,15 @@
 package com.rest.playbookrest.Controller;
 
-import com.rest.playbookrest.Entity.Coach;
-import com.rest.playbookrest.Entity.Play;
 import com.rest.playbookrest.Entity.Playbook;
 import com.rest.playbookrest.Service.PlaybookService;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +22,32 @@ import java.util.List;
 public class PlaybookController {
 
     private PlaybookService playbookService;
+    private final JobLauncher jobLauncher;
+    private final Job job;
 
     @Autowired
-    public PlaybookController(PlaybookService playbookService) {
+    public PlaybookController(PlaybookService playbookService, JobLauncher jobLauncher, Job job) {
         this.playbookService = playbookService;
+        this.jobLauncher = jobLauncher;
+        this.job = job;
     }
 
+    @PostMapping("/PlaybookJob")
+    public void writeToCSV(){
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addLong("startAt", System.currentTimeMillis())
+                .toJobParameters();
+
+        try {
+            jobLauncher.run(job, jobParameters);
+        } catch (JobExecutionAlreadyRunningException |
+                 JobRestartException |
+                 JobInstanceAlreadyCompleteException |
+                 JobParametersInvalidException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @GetMapping("/PlaybookList")
     public List<Playbook> findAllPlaybooks(){
 

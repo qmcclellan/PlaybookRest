@@ -1,16 +1,19 @@
 package com.rest.playbookrest.Service;
 
 import com.rest.playbookrest.Dao.PlaybookDao;
-import com.rest.playbookrest.Entity.Coach;
 import com.rest.playbookrest.Entity.Playbook;
-import com.rest.playbookrest.Entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PlaybookService implements Services<Playbook>{
+public class PlaybookService implements Services<Playbook>, PagingAndSortingRepository<Playbook, Integer> {
+
 
     private PlaybookDao playbookDao;
 
@@ -47,6 +50,8 @@ public class PlaybookService implements Services<Playbook>{
 
 
 
+
+
     public List<Playbook> findByType(String type){
 
         List<Playbook> playbooks = playbookDao.findByType(type);
@@ -57,5 +62,15 @@ public class PlaybookService implements Services<Playbook>{
     public List<Playbook> findByCoachId(Integer coachId){
 
         return playbookDao.findPlaybooksByCoach_Id(coachId);
+    }
+
+    @Override
+    public Iterable<Playbook> findAll(Sort sort) {
+        return playbookDao.findAll(sort);
+    }
+
+    @Override
+    public Page<Playbook> findAll(Pageable pageable) {
+        return playbookDao.findAll(pageable);
     }
 }
