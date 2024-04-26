@@ -54,7 +54,7 @@ public class FormationController {
 
     @GetMapping("/GetFormation/{formationId}")
     public Formation getFormation(@PathVariable("formationId") int formationId){
-        Formation formation = formationService.retrieve(formationId);
+        Formation formation = formationService.getReferenceById(formationId);
 
         return formation;
     }
@@ -62,7 +62,7 @@ public class FormationController {
     @GetMapping("/FormationListByName/{name}")
     public List<Formation> findFormationByName(@PathVariable("name") String name){
 
-        List<Formation> formations = formationService.findFormationByName(name);
+        List<Formation> formations = formationService.findByFormationsName(name);
 
         return formations;
 

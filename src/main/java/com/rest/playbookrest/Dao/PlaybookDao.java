@@ -14,6 +14,7 @@ public interface PlaybookDao extends JpaRepository<Playbook,Integer> {
 
     public List<Playbook> findByType(String type);
 
-    public List<Playbook> findPlaybooksByCoach_Id(Integer coachId);
+    public List<Playbook> findByCoachId(Integer id);
+
 
 }

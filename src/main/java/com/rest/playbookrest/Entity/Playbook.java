@@ -23,7 +23,6 @@ public class Playbook implements Serializable {
     @Column(name = "type")
     private String type;
 
-
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="coach")
     @JsonBackReference

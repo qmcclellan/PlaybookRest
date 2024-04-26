@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping(value ="/Playbook",produces = MediaType.APPLICATION_JSON_VALUE)
 public class PlaybookController {
 
-    private PlaybookService playbookService;
+    private final PlaybookService playbookService;
     private final JobLauncher jobLauncher;
     private final Job job;
 
@@ -51,9 +51,7 @@ public class PlaybookController {
     @GetMapping("/PlaybookList")
     public List<Playbook> findAllPlaybooks(){
 
-       List<Playbook> playbooks = playbookService.findAll();
-
-       return playbooks;
+        return playbookService.findAll();
     }
 
     @PostMapping("/AddPlaybook")
@@ -65,7 +63,7 @@ public class PlaybookController {
     @GetMapping("/GetPlaybook/{playbookId}")
     public Playbook getPlaybook(@PathVariable("playbookId")int playbookId){
 
-        return playbookService.retrieve(playbookId);
+        return playbookService.getReferenceById(playbookId);
     }
 
     @PutMapping("/UpdatePlaybook")

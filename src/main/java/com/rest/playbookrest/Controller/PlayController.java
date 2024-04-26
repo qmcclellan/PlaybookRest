@@ -35,7 +35,7 @@ public class PlayController {
     @GetMapping("/GetPlay/{playId}")
     public Play getPlay(@PathVariable("playId") int playId){
 
-        return playService.retrieve(playId);
+        return playService.getReferenceById(playId);
     }
 
     @GetMapping("/FindByType/{type}")

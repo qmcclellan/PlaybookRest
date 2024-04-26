@@ -34,13 +34,13 @@ public class UsersController {
     @GetMapping("/GetUser/{userId}")
     public Users getUser(@PathVariable("userId") Integer userId){
 
-        return usersService.retrieve(userId);
+        return usersService.getReferenceById(userId);
     }
 
     @GetMapping("/GetUserByName/{userName}")
     public Users getUser(@PathVariable("userName") String userName){
 
-        return usersService.findByUserName(userName);
+        return usersService.findByName(userName);
     }
 
     @PutMapping("/UpdateUser")

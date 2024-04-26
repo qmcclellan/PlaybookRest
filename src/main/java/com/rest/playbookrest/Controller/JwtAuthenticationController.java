@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 record JwtTokenResponse(String token) {};
-record JwtTokenRequest(String username, String password) {};
+;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -42,4 +42,7 @@ public class JwtAuthenticationController {
 
         return ResponseEntity.ok(new JwtTokenResponse(token));
     }
+}
+
+record JwtTokenRequest(String username, String password) {
 }

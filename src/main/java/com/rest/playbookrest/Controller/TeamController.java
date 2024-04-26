@@ -30,7 +30,7 @@ public class TeamController {
 
     @GetMapping("/GetTeam/{teamId}")
     public Team getTeam(@PathVariable("teamId") Integer teamId){
-        return teamService.retrieve(teamId);
+        return teamService.getReferenceById(teamId);
     }
 
 

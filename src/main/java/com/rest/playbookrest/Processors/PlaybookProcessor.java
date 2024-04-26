@@ -7,6 +7,7 @@ public class PlaybookProcessor implements ItemProcessor<Playbook,Playbook> {
 
     @Override
     public Playbook process(Playbook playbook) throws Exception {
+
         return playbook;
     }
 }

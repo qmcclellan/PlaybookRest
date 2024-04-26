@@ -47,7 +47,7 @@ public class CoachController {
 
         List<Playbook> playbooks = playbookService.findByCoachId(coachId);
 
-        Coach coach = coachService.retrieve(coachId);
+        Coach coach = coachService.getReferenceById(coachId);
 
         coach.setPlayBooks(playbooks);
 
@@ -57,7 +57,7 @@ public class CoachController {
     @GetMapping("/GetCoachByUser/{coachId}")
     public Coach getCoachByUser(@PathVariable int coachId){
 
-        Coach coach = coachService.retrieve(coachId);
+        Coach coach = coachService.getReferenceById(coachId);
 
         return coach;
     }
@@ -69,7 +69,7 @@ public class CoachController {
             //Add exception
         }
 
-        return coachService.findCoachByType(coachType);
+        return coachService.findByType(coachType);
     }
 
     @GetMapping("/FindCoachByName/{coachName}")
@@ -79,7 +79,7 @@ public class CoachController {
             //Add exception
         }
 
-        return coachService.findByCoachName(coachName);
+        return coachService.findByName(coachName);
     }
 
     @GetMapping("/FindCoachByUserName/{userName}")
@@ -89,7 +89,7 @@ public class CoachController {
             //Add exception
         }
 
-        return coachService.findCoachByUserName(userName);
+        return coachService.findCoachByUserUserName(userName);
     }
 
     @PutMapping("/UpdateCoach")

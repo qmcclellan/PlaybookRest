@@ -37,7 +37,7 @@ public class SchemeController {
     @GetMapping("/GetScheme/{schemeId}")
     public Scheme getScheme(@PathVariable("schemeId") int schemeId){
 
-        return schemeService.retrieve(schemeId);
+        return schemeService.getReferenceById(schemeId);
     }
     @GetMapping("/FindByName/{schemeName}")
     public Scheme findByName(@PathVariable("schemeName") String schemeName){

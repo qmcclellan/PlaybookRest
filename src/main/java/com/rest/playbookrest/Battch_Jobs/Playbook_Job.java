@@ -1,11 +1,10 @@
-package com.rest.playbookrest.Config;
+package com.rest.playbookrest.Battch_Jobs;
 
 import com.rest.playbookrest.Entity.Playbook;
 import com.rest.playbookrest.Processors.PlaybookProcessor;
 import com.rest.playbookrest.Service.PlaybookService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -19,7 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.data.domain.Sort;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -27,13 +25,13 @@ import java.util.HashMap;
 
 @Configuration
 //@EnableBatchProcessing
-public class BatchConfig {
+public class Playbook_Job {
 
     private DataSource dataSource;
 
     private PlaybookService playbookService;
 
-    public BatchConfig(DataSource dataSource,  PlaybookService playbookService) {
+    public Playbook_Job(DataSource dataSource, PlaybookService playbookService) {
         this.dataSource = dataSource;
         this.playbookService = playbookService;
     }

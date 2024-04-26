@@ -14,6 +14,5 @@ public interface SchemeDao extends JpaRepository<Scheme,Integer> {
 
     public List<Scheme> findByType(String type);
 
-    //public List<Scheme> findAllByFormationId(Integer id);
 
 }

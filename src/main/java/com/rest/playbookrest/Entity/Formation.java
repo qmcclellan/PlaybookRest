@@ -27,7 +27,9 @@ public class Formation implements Serializable {
     @JsonIgnoreProperties("formations")
     @ManyToOne
     @JoinColumn(name = "playbook_id")
-    Playbook playBook;
+    private Playbook playBook;
+
+    //Add the type of formation to the db an to the class to make it easier for searching.
 
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
