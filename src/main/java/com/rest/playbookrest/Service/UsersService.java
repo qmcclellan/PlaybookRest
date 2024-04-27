@@ -63,7 +63,7 @@ public class UsersService implements Services<Users>, UserDetailsService {
 
     @Override
     public List<Users> findByType(String type) {
-        return usersDao.findUsersByRoleName(type);
+        return null;
     }
 
     @Override

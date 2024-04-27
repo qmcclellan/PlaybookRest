@@ -1,5 +1,6 @@
 package com.rest.playbookrest.Battch_Jobs;
 
+import com.rest.playbookrest.Dao.PlaybookDao;
 import com.rest.playbookrest.Entity.Playbook;
 import com.rest.playbookrest.Processors.PlaybookProcessor;
 import com.rest.playbookrest.Service.PlaybookService;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -27,13 +29,10 @@ import java.util.HashMap;
 //@EnableBatchProcessing
 public class Playbook_Job {
 
-    private DataSource dataSource;
+   private PlaybookDao playbookDao;
 
-    private PlaybookService playbookService;
-
-    public Playbook_Job(DataSource dataSource, PlaybookService playbookService) {
-        this.dataSource = dataSource;
-        this.playbookService = playbookService;
+    public Playbook_Job(PlaybookDao playbookDao) {
+        this.playbookDao = playbookDao;
     }
 
     @Bean
@@ -43,7 +42,7 @@ public class Playbook_Job {
         HashMap<String, Sort.Direction> sorts = new HashMap<>();
         sorts.put("name", Sort.Direction.ASC);
 
-        reader.setRepository(playbookService);
+        reader.setRepository(playbookDao);
         reader.setMethodName("findAll");
         reader.setSort(sorts);
         reader.setPageSize(10);
@@ -90,7 +89,7 @@ public class Playbook_Job {
     }
 
     @Bean
-    public Job runJob(JobRepository jobRepository, PlatformTransactionManager transactionManager){
+    public Job runPlaybookJob(JobRepository jobRepository, PlatformTransactionManager transactionManager){
 
         return new JobBuilder("writePlaybookToCsv", jobRepository)
                 .start(writeStep(jobRepository, transactionManager))

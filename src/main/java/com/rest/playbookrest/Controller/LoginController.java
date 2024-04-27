@@ -29,7 +29,7 @@ public class LoginController {
     @GetMapping("/GetUser/{userName}")
     public Users getUser(@PathVariable("userName") String userName){
 
-        return usersService.findByUserName(userName);
+        return usersService.findByName(userName);
     }
 
     @GetMapping("/GetCoach/{userId}")

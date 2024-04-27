@@ -11,7 +11,7 @@ public interface UsersDao extends JpaRepository<Users, Integer> {
 
     public Users findByUserName(String userName);
 
-    public List<Users> findUsersByRoleName(String name);
+   // public List<Users> findUsersByRoleName(String name);
 
 
 

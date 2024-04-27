@@ -32,7 +32,7 @@ public class TeamService implements Services<Team> {
 
     @Override
     public List<Team> findByType(String type) {
-        return teamDao.findByType(type);
+        return null;
     }
 
     @Override

@@ -12,5 +12,4 @@ public interface TeamDao extends JpaRepository<Team,Integer> {
     
     public Team findByName( String name);
 
-    List<Team> findByType(String type);
 }

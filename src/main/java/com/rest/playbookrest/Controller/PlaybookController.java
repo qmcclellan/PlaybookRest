@@ -11,6 +11,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class PlaybookController {
     private final Job job;
 
     @Autowired
-    public PlaybookController(PlaybookService playbookService, JobLauncher jobLauncher, Job job) {
+    public PlaybookController(PlaybookService playbookService, JobLauncher jobLauncher, @Qualifier("runPlaybookJob") Job job) {
         this.playbookService = playbookService;
         this.jobLauncher = jobLauncher;
         this.job = job;
