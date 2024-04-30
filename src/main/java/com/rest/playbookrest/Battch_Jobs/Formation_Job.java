@@ -51,7 +51,7 @@ private FormationDao formationDao;
         RepositoryItemWriter<Formation> writer = new RepositoryItemWriter<>();
 
         writer.setRepository(formationDao);
-        writer.setMethodName("saveAllAndFlush");
+        writer.setMethodName("save");
 
         return writer;
     }

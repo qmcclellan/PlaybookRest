@@ -6,9 +6,10 @@ import org.springframework.batch.item.ItemProcessor;
 public class SchemeProcessor implements ItemProcessor<Scheme,Scheme> {
     @Override
     public Scheme process(Scheme scheme) throws Exception {
-      //  String type = scheme.getFormation().getType();
+        String type = scheme.getFormation().getType();
 
-        //scheme.setType(type);
+        scheme.setType(type);
+
         return scheme;
     }
 }

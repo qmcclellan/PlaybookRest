@@ -2,6 +2,14 @@ package com.rest.playbookrest.Controller;
 
 import com.rest.playbookrest.Entity.Play;
 import com.rest.playbookrest.Service.PlayService;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +23,31 @@ public class PlayController {
 
     private PlayService playService;
 
-    @Autowired
-    public PlayController(PlayService playService) {
+    private Job runPlayJob;
+
+    private JobLauncher jobLauncher;
+
+    public PlayController(PlayService playService, Job runPlayJob, JobLauncher jobLauncher) {
         this.playService = playService;
+        this.runPlayJob = runPlayJob;
+        this.jobLauncher = jobLauncher;
+    }
+
+    @PostMapping("/PlayJob")
+    public void playJob(){
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addLong("startAt", System.currentTimeMillis())
+                .toJobParameters();
+
+        try {
+            jobLauncher.run(runPlayJob, jobParameters);
+        } catch (JobExecutionAlreadyRunningException |
+                 JobRestartException |
+                 JobInstanceAlreadyCompleteException |
+                 JobParametersInvalidException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @GetMapping("/PlayList")

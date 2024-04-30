@@ -7,6 +7,17 @@ public class FormationProcessor implements ItemProcessor<Formation, Formation> {
 
     @Override
     public Formation process(Formation formation) throws Exception {
-        return formation;
+
+        if(formation.getType() == null) {
+
+           System.out.println(formation);
+            String type = formation.getPlayBook().getType();
+
+            formation.setType(type);
+            return formation;
+        }else{
+            return null;
+        }
+
     }
 }

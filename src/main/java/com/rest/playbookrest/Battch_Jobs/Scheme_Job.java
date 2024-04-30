@@ -58,7 +58,7 @@ public class Scheme_Job {
 
         writer.setRepository(schemeDao);
 
-        writer.setMethodName("saveAllAndFlush");
+        writer.setMethodName("save");
 
         return writer;
 

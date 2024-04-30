@@ -54,7 +54,7 @@ public class Play_Job {
 
         writer.setRepository(playDao);
 
-        writer.setMethodName("saveAllAndFlush");
+        writer.setMethodName("save");
         return writer;
 
     }
@@ -69,7 +69,7 @@ public class Play_Job {
     public Step writePlayStep(JobRepository jobRepository, PlatformTransactionManager transactionManager){
 
        return new StepBuilder("writePlay", jobRepository)
-                .<Play,Play>chunk(50,transactionManager)
+                .<Play,Play>chunk(10,transactionManager)
                 .reader(playItemReader())
                 .processor(playItemProcessor())
                 .writer(playItemWriter())

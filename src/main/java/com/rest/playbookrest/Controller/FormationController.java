@@ -3,7 +3,16 @@ package com.rest.playbookrest.Controller;
 import com.rest.playbookrest.Entity.Formation;
 import com.rest.playbookrest.Service.FormationService;
 import com.rest.playbookrest.Service.SchemeService;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,18 +30,33 @@ public class FormationController {
 
     private FormationService formationService;
 
-    private SchemeService schemeService;
+  //  private SchemeService schemeService;
 
-  //  public FormationController(FormationService formationService) {
-//        this.formationService = formationService;
-//    }
+    private Job job;
 
-    @Autowired
-    public FormationController(FormationService formationService, SchemeService schemeService) {
+    private JobLauncher jobLauncher;
+
+    public FormationController(FormationService formationService, @Qualifier("runFormationJob") Job job, JobLauncher jobLauncher) {
         this.formationService = formationService;
-        this.schemeService = schemeService;
+        this.job = job;
+        this.jobLauncher = jobLauncher;
     }
 
+    @PostMapping("/writeFormation")
+    public void writeFormation(){
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addLong("startAt", System.currentTimeMillis())
+                .toJobParameters();
+
+        try {
+            jobLauncher.run(job, jobParameters);
+        } catch (JobExecutionAlreadyRunningException | JobInstanceAlreadyCompleteException | JobRestartException |
+                 JobParametersInvalidException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
     @GetMapping("/FormationList")
     public List<Formation> FormationList() {
         return formationService.findAll() ;

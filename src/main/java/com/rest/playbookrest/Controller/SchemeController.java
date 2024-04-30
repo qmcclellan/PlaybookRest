@@ -3,6 +3,14 @@ package com.rest.playbookrest.Controller;
 import com.rest.playbookrest.Entity.Scheme;
 import com.rest.playbookrest.Service.FormationService;
 import com.rest.playbookrest.Service.SchemeService;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +23,31 @@ public class SchemeController {
 
     private SchemeService schemeService;
 
-    private FormationService formationService;
+    private Job runSchemeJob;
 
-    public SchemeController(SchemeService schemeService, FormationService formationService) {
+    private JobLauncher jobLauncher;
+
+    public SchemeController(SchemeService schemeService, Job runSchemeJob, JobLauncher jobLauncher) {
         this.schemeService = schemeService;
-        this.formationService = formationService;
+        this.runSchemeJob = runSchemeJob;
+        this.jobLauncher = jobLauncher;
+    }
+
+    @PostMapping("/UpdateType")
+    public void schemeBatch(){
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addLong("startAt", System.currentTimeMillis() )
+                .toJobParameters();
+
+        try {
+            jobLauncher.run(runSchemeJob, jobParameters);
+        } catch (JobExecutionAlreadyRunningException |
+                 JobRestartException |
+                 JobInstanceAlreadyCompleteException |
+                 JobParametersInvalidException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @GetMapping("/SchemeList")

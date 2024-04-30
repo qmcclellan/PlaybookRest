@@ -23,13 +23,14 @@ public class Formation implements Serializable {
     @Column(name="name")
     private String name;
 
+    @Column(name="type")
+    private String type;
+
     @JsonBackReference
     @JsonIgnoreProperties("formations")
     @ManyToOne
     @JoinColumn(name = "playbook_id")
     private Playbook playBook;
-
-    //Add the type of formation to the db an to the class to make it easier for searching.
 
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
@@ -61,6 +62,11 @@ public class Formation implements Serializable {
         this.playBook = playBook;
     }
 
+    public Formation(Integer id, String name, String type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
@@ -80,6 +86,16 @@ public class Formation implements Serializable {
 
     public Playbook getPlayBook() {
         return playBook;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+
+            this.type = type;
+
     }
 
     public void setPlayBook(Playbook playBook) {
